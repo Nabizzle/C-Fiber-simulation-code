@@ -1,0 +1,86 @@
+/*--------------------------------------------------------------------
+originally written 11/11/17
+last update 12/1/17
+Nabeel Chowdhury
+
+SIMULATION OF PNS UNMYELINATED C-FIBER WITH UNIFORM DISTRIBUTION OF NA CHANNELS
+----------------------------------------------------------------------*/
+
+load_proc("nrnmainmenu")
+
+proc model_globels() {		
+	v_init=-61.38 //rest potential(mV) 		
+	dt=0.025 //time stiep (ms)       	
+	tstop=11 //simulation duration
+//Intracellular stimuluation parameters//	
+	istim=25 //amplitude of injected current (nA)
+	delay=1	//dealy of onset of current (ms)
+	pw=.1 //pulse width of the injected current (ms)
+	cathodeDuration=7 //pulse width of the charge balancing current (ms)
+	}			
+
+model_globels ()
+
+objectvar stim //object variable to create the injected anodic current
+objectvar stim2 //object variable to create the injected cathodic charge balancing current
+
+create axon //creates the C-Fiber
+access axon //makes the created C-Fiber the default
+
+proc initialize(){
+axon{
+	nseg=10000 //number of compartments in the axon
+		diam=.5 //diameter of the axon (um)
+		L=2000 //length of the C-Fiber (um)
+		Ra=8 //axoplasmic resistance of the C-Fiber (ohm*cm)
+		cm=.81 //capacitance of the C-Fiber (uF/cm^2)
+		insert axnode //creates a C-Fiber full of the channels defined in the Neishabouri and Tigerholm papers
+		}
+	
+	finitialize(v_init)
+	fcurrent()
+	}
+initialize()
+
+//intracellular stimulus//
+proc stimul() {
+axon stim=new IClamp(.5)
+	stim.del=delay
+	stim.dur=pw
+	stim.amp=istim
+	
+axon stim2=new IClamp(.5)
+	stim2.del=delay+pw //sets the charge balancing current to occur after the initial current is done
+	stim2.dur=cathodeDuration
+	stim2.amp=-istim*pw/cathodeDuration //equation to balance the charge
+	}
+stimul()
+
+xpanel("Stimulus parameters")
+	xvalue("Stimulus Amplitude (nA)", "istim", 1, "stimul()", 1)
+	xvalue("Pulse Duration (ms)", "pw", 1, "stimul()", 1)
+	xvalue("Onset Delay (ms)", "delay", 1, "stimul()", 1)
+xpanel(100,182)
+
+xpanel("RunControl", 0)
+	v_init = v_init
+	xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+	xbutton("Init & Run","run()")
+	xbutton("Stop","stoprun=1")
+	runStopAt = 5
+	xvalue("Continue til","runStopAt", 1,"{continuerun(runStopAt) stoprun=1}", 1, 1 )
+	runStopIn = 1
+	xvalue("Continue for","runStopIn", 1,"{continuerun(t + runStopIn) stoprun=1}", 1, 1 )
+	xbutton("Single Step","steprun()")
+	t = 0
+	xvalue("t","t", 2 )
+	tstop = tstop
+	xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+	dt = 0.025
+	xvalue("dt","dt", 1,"setdt()", 0, 1 )
+	steps_per_ms = 40
+	xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+	xcheckbox("Quiet",&stdrun_quiet,"")
+	realtime = 0
+	xvalue("Real Time","realtime", 0,"", 0, 1 )
+xpanel(133,387)

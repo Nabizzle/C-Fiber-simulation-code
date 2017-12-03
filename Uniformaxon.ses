@@ -1,0 +1,47 @@
+objectvar save_window_, rvp_
+objectvar scene_vector_[5]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,11,-80,80)
+scene_vector_[2] = save_window_
+{save_window_.view(0, -80, 11, 160, 1276, 171, 300.24, 200.1)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addexpr("axon.v( 0.5 )", 2, 1, 0.749771, 0.985033, 2)
+save_window_.addexpr("axon.v(0.7)", 3, 1, 0.747242, 0.993553, 2)
+save_window_.label(0.89928, 0.370615, "ms", 2, 1, 0, 0, 1)
+save_window_.label(0.0767386, 0.935532, "mV", 2, 1, 0, 0, 1)
+save_window_.label(0.2494, 0.921139, "Voltage at Nodes of C-Fiber", 2, 1, 0, 0, 1)
+save_window_.addexpr("axon.v(0.8)", 4, 1, 0.747242, 1.00435, 2)
+save_window_.addexpr("axon.v(0.9)", 5, 1, 0.747242, 1.01154, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,2000,-80,80)
+scene_vector_[3] = save_window_
+{save_window_.view(0, -80, 2000, 120, 1278, 590, 299.52, 199.38)}
+flush_list.append(save_window_)
+save_window_.save_name("flush_list.")
+objectvar rvp_
+rvp_ = new RangeVarPlot("v")
+axon rvp_.begin(0)
+axon rvp_.end(1)
+rvp_.origin(0)
+save_window_.addobject(rvp_, 2, 1, 0.8, 0.9)
+save_window_.label(0.348558, 0.913632, "Voltage Along C-Fiber", 2, 1, 0, 0, 1)
+save_window_.label(0.896635, 0.382787, "um", 2, 1, 0, 0, 1)
+save_window_.label(0.0793269, 0.938911, "mV", 2, 1, 0, 0, 1)
+}
+{
+save_window_ = new PlotShape(0)
+save_window_.size(-100,2100,-1099.67,1099.67)
+save_window_.variable("v")
+scene_vector_[4] = save_window_
+{save_window_.view(-100, -1099.67, 2200, 2199.34, 1851, 391, 199.44, 199.38)}
+fast_flush_list.append(save_window_)
+save_window_.save_name("fast_flush_list.")
+}
+objectvar scene_vector_[1]
+{doNotify()}
