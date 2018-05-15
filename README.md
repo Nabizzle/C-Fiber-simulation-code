@@ -42,3 +42,7 @@ Run either the saltatoryinit.hoc or uniforminit.hoc file in the correct director
 
 ## Author
 * **Nabeel Chowdhury** - Original author on 12/1/17
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
