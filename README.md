@@ -6,14 +6,14 @@ A NERUON model to simulate the firing of a C-Fiber with a uniform or clustering 
 
 The init files of each model are the scprits you want to run and the rest are background files that define the usage of all of the parameters.
 
-### The modifiable files for the uniform distribution code is as follows:
+### The modifiable files for the uniform distribution code are as follows:
 
 * AXNODE.mod (This file contains the definitions of the channel properties)
 * Uniformaxon.hoc (This is the file that is run and contains the parameters that define the neuron)
 * Uniformaxon.ses (This calls the figures that I was using in testing)
 * uniforminit.hoc (This calls the other files to run together. this is the file you want to run for the simulation)
 
-### The modifiable files for the clustered distribution code is as follows:
+### The modifiable files for the clustered distribution code are as follows:
 
 * SAXNODE.mod (This is a modified version of AXNODE.mod to get saltatory conduction to work)
 * AXBLANK.mod (this is the file that defines the channel properties in the spaces between the clusters of sodium channels)
