@@ -4,7 +4,7 @@ A NERUON model to simulate the firing of a C-Fiber with a uniform or clustering 
 
 ## Getting Started
 
-The init files of each model are the scprits you want to run and the rest are background files that define the usage of all of the parameters.
+The init files of each model are the scripts you want to run and the rest are background files that define the usage of all of the parameters.
 
 ### The modifiable files for the uniform distribution code are as follows:
 
@@ -21,11 +21,11 @@ The init files of each model are the scprits you want to run and the rest are ba
 * Saltatoryaxon.ses (This calls the figures that I was using in testing)
 * saltatoryinit.hoc (This calls the other files to run together. this is the file you want to run for the simulation)
 
-### Prerequisits
+### Prerequisites
 
 NEURON v7.5 or later
 
-## Runnig the Model
+## Running the Model
 
 Run either the saltatoryinit.hoc or uniforminit.hoc file in the correct directory. If you want to change the channel properties of either system, you must run the mknrndll function that comes with NEURON to recompile the files. If you want to change the axon's physical properties in the Uniformaxon.hoc or Saltatoryaxon.hoc files, you will not need to recompile. If you change the cluster sizes and/or the internodal sizes in the Saltatoryaxon.hoc file, the figures that come up will no longer work correctly and you will need to make a new voltage and space plot yourself.
 
