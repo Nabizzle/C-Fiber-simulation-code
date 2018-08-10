@@ -31,8 +31,8 @@ Run either the saltatoryinit.hoc or uniforminit.hoc file in the correct director
 
 ## Papers for the Parameters in the Saltatory Conduction Model
 
-* Neishabouri A, Faisal AA. Saltatory conduction in unmyelinated axons: clustering of Na+ channels on lipid rafts enables micro-saltatory conduction in C-fibers.
-* Tigerholm J, Petersson ME, Oberja O, et al. Modeling activity-dependent changes of axonal spike in primary afferent C-nociceptors. Journal of Neurophysiology.
+* Neishabouri A, Faisal AA. [Saltatory conduction in unmyelinated axons: clustering of Na+ channels on lipid rafts enables micro-saltatory conduction in C-fibers.](https://www.frontiersin.org/articles/10.3389/fnana.2014.00109/full)
+* Tigerholm J, Petersson ME, Oberja O, et al. [Modeling activity-dependent changes of axonal spike in primary afferent C-nociceptors. Journal of Neurophysiology.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4044369/)
 
 ## Built With
 
