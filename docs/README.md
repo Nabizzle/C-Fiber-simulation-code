@@ -45,4 +45,4 @@ Run either the saltatoryinit.hoc or uniforminit.hoc file in the correct director
 
 ## License
 
-This project is licensed under the GNU General Public License Version 3 License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the GNU General Public License Version 3 License - see the [LICENSE](../LICENSE) file for details
